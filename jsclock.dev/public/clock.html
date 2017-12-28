@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Clock</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="#">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <style>
+    div.clock-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      background-color: yellow;
+    }
+
+    div#outer {
+      width: 30rem;
+      height: 30rem;
+      border:20px solid white;
+      border-radius:50%;
+      margin:25px auto;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+
+    div#inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px);
+    }
+
+    .hand {
+      width:100%;
+      height:6px;
+      background:black;
+      position: absolute;
+      top:50%;
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1.0);
+    }
+
+    .hand.mins {
+      width:50%;
+      height:6px;
+      background:red;
+      position: absolute;
+      top:50%;
+      transform: rotate(90deg);
+      transform-origin: 100%;
+    }
+
+    .hand.secs {
+      width:50%;
+      height:6px;
+      background:green;
+      position: absolute;
+      top:50%;
+      transform: rotate(90deg);
+      transform-origin: 100%;
+    }
+
+    .hand.hour {
+      width:50%;
+      height:6px;
+      background:blue;
+      position: absolute;
+      top:50%;
+      transform: rotate(90deg);
+      transform-origin: 100%;
+    }
+
+  </style>
+</head>
+<body>
+<body>
+<div id="navbar"></div>
+<div class="clock-row">
+  <div id="outer" class="ring">
+    <div id="inner" class="ring">
+      <div class="hand hour"><span>h</span></div><!-- blue -->
+      <div class="hand mins"><span>m</span></div><!-- red -->
+      <div class="hand secs"><span>s</span></div><!-- green -->
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+$('#navbar').load('../../navbar.html');
+</script>
+<script>
+const secondsHand = document.querySelector('.hand.secs');
+const minutesHand = document.querySelector('.hand.mins');
+const hoursHand = document.querySelector('.hand.hour');
+function setDate() {
+  const now = new Date();
+
+  const seconds = now.getSeconds();
+  const secsDegrees = ((seconds/60) * 360) + 90;
+  secondsHand.style.transform = `rotate(${secsDegrees}deg)`;
+
+  const minutes = now.getMinutes();
+  const minsDegrees = ((minutes/60) * 360) + 90;
+  minutesHand.style.transform = `rotate(${minsDegrees}deg)`;
+  console.log(seconds);
+
+  const hours = now.getHours();
+  const hoursDegrees = ((hours/12) * 360) + 90;
+  hoursHand.style.transform = `rotate(${hoursDegrees}deg)`;
+}
+
+setInterval(setDate, 1000);
+</script>
+</body>
+</html>

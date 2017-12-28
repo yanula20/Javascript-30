@@ -7,11 +7,11 @@
   <link rel="stylesheet" type="text/css" href="#">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <style>
-    div.clock-row {
+    div.clock-row,  {
       display: flex;
       flex-direction: row;
       justify-content: center;
-      background-color: yellow;
+      background-color: white;
     }
 
     div#outer {
@@ -74,6 +74,8 @@
       transform-origin: 100%;
     }
 
+
+
   </style>
 </head>
 <body>
@@ -81,10 +83,10 @@
 <div id="navbar"></div>
 <div class="clock-row">
   <div id="outer" class="ring">
-    <div id="inner" class="ring">
-      <div class="hand hour"><span>h</span></div><!-- blue -->
-      <div class="hand mins"><span>m</span></div><!-- red -->
-      <div class="hand secs"><span>s</span></div><!-- green -->
+    <div id="inner" class="ring"><span id="clock-face"><img src="./img/clock_face.png" alt="clock" height="270" width="260"></span>
+      <div class="hand hour">H</div><!-- blue -->
+      <div class="hand mins"></div><!-- red -->
+      <div class="hand secs"></div><!-- green -->
     </div>
   </div>
 </div>
@@ -100,10 +102,13 @@ const minutesHand = document.querySelector('.hand.mins');
 const hoursHand = document.querySelector('.hand.hour');
 function setDate() {
   const now = new Date();
-
+<!-- +90 b/c by default divs start on x-axis -->
   const seconds = now.getSeconds();
   const secsDegrees = ((seconds/60) * 360) + 90;
   secondsHand.style.transform = `rotate(${secsDegrees}deg)`;
+  if(seconds === 1){
+    secsDegrees = ((1/60) * 360) + 90;
+  }
 
   const minutes = now.getMinutes();
   const minsDegrees = ((minutes/60) * 360) + 90;
@@ -114,7 +119,6 @@ function setDate() {
   const hoursDegrees = ((hours/12) * 360) + 90;
   hoursHand.style.transform = `rotate(${hoursDegrees}deg)`;
 }
-
 setInterval(setDate, 1000);
 </script>
 </body>

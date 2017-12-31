@@ -1,0 +1,90 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Grids 3</title>
+  <base href="/">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap:1em;
+    /*justify-items: start;*/
+    /*justify-items: end;*/
+    /*justify-items: center;*/
+    /*align-items: end;*/
+    align-items: stretch;
+  }
+
+  .box1 {
+    align-self: end;
+  }
+
+  .box2 {
+    align-self: start;
+  }
+
+  .box3 {
+    justify-self: end;
+  }
+
+  .box4 {
+
+    grid-column: 1/3;
+  }
+
+  .box6 {
+    grid-column: 2/4;
+  }
+
+  .box7 {
+    grid-column: 2;
+    grid-row: 3/5;
+    border: 1px solid red;
+  }
+  .box9 {
+    grid-column: 1/3;
+    grid-row: 4/6;
+    border: 1px solid black;
+  }
+
+  .grid > div {
+    background-color: #eee;
+    padding: 1em;
+  }
+
+  .grid > div:nth:child(odd) {
+    padding: 1em;
+  }
+
+
+
+  </style>
+</head>
+<body>
+<div class="grid">
+  <div class="box box1">Box1</div>
+  <div class="box box2">Box2</div>
+  <div class="box box3">Box3</div>
+  <div class="box box4">Box4</div>
+  <div class="box box5">Box5</div>
+  <div class="box box6">Box6</div>
+  <div class="box box7">Box7</div>
+  <div class="box box8">Box8</div>
+  <div class="box box9">Box9</div>
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+
+</html>

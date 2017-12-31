@@ -73,9 +73,6 @@
       transform: rotate(90deg);
       transform-origin: 100%;
     }
-
-
-
   </style>
 </head>
 <body>
@@ -83,7 +80,7 @@
 <div id="navbar"></div>
 <div class="clock-row">
   <div id="outer" class="ring">
-    <div id="inner" class="ring"><span id="clock-face"><img src="./img/clock_face.png" alt="clock" height="270" width="260"></span>
+    <div id="inner" class="ring"><span id="clock-face"><img src="./img/clock_face.png" alt="clock" height="272" width="270"></span>
       <div class="hand hour">H</div><!-- blue -->
       <div class="hand mins"></div><!-- red -->
       <div class="hand secs"></div><!-- green -->
@@ -105,10 +102,12 @@ function setDate() {
 <!-- +90 b/c by default divs start on x-axis -->
   const seconds = now.getSeconds();
   const secsDegrees = ((seconds/60) * 360) + 90;
-  secondsHand.style.transform = `rotate(${secsDegrees}deg)`;
   if(seconds === 1){
-    secsDegrees = ((1/60) * 360) + 90;
+    const secsDegrees = ((1/60) * 360) + 90;
+  } else {
+    const secsDegrees = ((seconds/60) * 360) + 90;
   }
+  secondsHand.style.transform = `rotate(${secsDegrees}deg)`;
 
   const minutes = now.getMinutes();
   const minsDegrees = ((minutes/60) * 360) + 90;
